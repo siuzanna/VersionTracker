@@ -19,7 +19,7 @@ public struct VersionTracker {
     private let provider: VersionProvider
     private let storage: VersionStorage
 
-    public init(provider: VersionProvider, storage: VersionStorage) {
+    public init(provider: VersionProvider = BundleVersionProvider(), storage: VersionStorage = UserDefaultsVersionStorage()) {
         self.provider = provider
         self.storage = storage
     }
