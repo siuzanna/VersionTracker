@@ -59,7 +59,7 @@ public struct VersionHistoryView: View {
                                 Spacer()
                             }
                             .padding(.vertical, 4)
-                            .alignmentGuide(.listRowSeparatorLeading) { _ in 0 }
+                            .listRowSeparatorLeadingAlignment()
                         }
                     }
                 }
@@ -135,6 +135,17 @@ public struct VersionHistoryView: View {
             return .updated
         } else {
             return .downgraded
+        }
+    }
+}
+
+private extension View {
+    @ViewBuilder
+    func listRowSeparatorLeadingAlignment() -> some View {
+        if #available(iOS 16.0, *) {
+            self.alignmentGuide(.listRowSeparatorLeading) { _ in 0 }
+        } else {
+            self
         }
     }
 }
