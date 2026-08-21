@@ -80,7 +80,7 @@ public struct VersionHistoryView: View {
     }
 
     private func loadVersionHistory() {
-        self.versionHistory = self.storage.versionHistory
+        self.versionHistory = self.storage.versionHistory.reversed()
     }
 
     private func versionText(for versionRecord: VersionRecord) -> String {
@@ -116,12 +116,12 @@ public struct VersionHistoryView: View {
     }
 
     private func status(for index: Int) -> VersionHistoryStatus {
-        guard index > 0 else {
+        guard index < self.versionHistory.count - 1 else {
             return .firstLaunch
         }
 
         let current = self.versionHistory[index]
-        let previous = self.versionHistory[index - 1]
+        let previous = self.versionHistory[index + 1]
 
         if current.version > previous.version {
             return .updated
