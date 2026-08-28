@@ -45,7 +45,7 @@ public struct VersionHistoryView: View {
                             HStack {
                                 Spacer()
                                 VStack(alignment: .center, spacing: 4) {
-                                    Text("#\(index + 1)")
+                                    Text("#\(versionHistory.count - index)")
                                         .font(.caption)
                                         .foregroundColor(.secondary)
 
